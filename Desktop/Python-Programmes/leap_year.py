@@ -1,13 +1,16 @@
 def check_leap_year():
-    year = int(input("Enter year "))
-    if year < 1000 and year > 9999:
-        print("Invalid input")
-    else:
-        if ((year % 400 == 0)
-            or ((year % 4 == 0) and (year % 100 != 0))):
-                print("Leap year")
+    try :
+        year = int(input("Enter year "))
+        if year < 1000 or year > 9999:
+            print("Year should be in range 1000-9999")
         else:
-            print("Not a leap year")
+            if ((year % 400 == 0)
+                or ((year % 4 == 0) and (year % 100 != 0))):
+                    print("Leap year")
+            else:
+                print("Not a leap year")
+    except ValueError:
+        print("Invalid value")
 
 
 check_leap_year()
