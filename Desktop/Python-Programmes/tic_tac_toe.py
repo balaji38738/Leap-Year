@@ -26,8 +26,10 @@ class TicTacToe:
     def coin_toss(self):
         face = random.choice(["HEAD", "TAIL"])
         if face == "HEAD":
+            self.turn = USER
             print("Your turn first")
         else:
+            self.turn = COMP
             print("Computer's turn first")
         return face
 
@@ -130,7 +132,15 @@ class TicTacToe:
             elif concat_cells == char + char + " ":
                 empty_cell_row, empty_cell_column = 2, 0
         return empty_cell_row, empty_cell_column
-
+    
+    #Fills the cells & changes the turn
+    def fill_cell(
+            self, char,
+            row, column):
+        board[row, column] = char
+        global filled_cells
+        filled_cells += 1
+        self.turn = (1 - self.turn)
 
 tic_tac_toe = TicTacToe()
 tic_tac_toe.reset_board()
