@@ -54,9 +54,9 @@ class TicTacToe:
             if cell1 == cell2 and cell2 == cell3:
                 self.is_won = True
                 if cell1 == user_char:
-                    winner = USER
+                    self.winner = USER
                 else:
-                    winner = COMP
+                    self.winner = COMP
 
 
 
