@@ -78,8 +78,58 @@ class TicTacToe:
                 print("You won")
             else:
                 print("Computer won")
-        elif filled_cells == 9:
+        elif filled_cells == TOTAL_ROWS * TOTAL_COLUMNS:
             print("Game Tie")
+
+    def check_win_possibility(self, char):
+        empty_cell_row, empty_cell_column = None, None
+        for i in range(TOTAL_ROWS):
+
+            #Finds single empty cell in ith row
+            concat_cells = board[i, 0] + board [i, 1] + board[i, 2]
+            if concat_cells == " " + char + char:
+                empty_cell_row, empty_cell_column = i, 0
+                break
+            elif concat_cells == char + " " + char:
+                empty_cell_row, empty_cell_column = i, 1
+                break
+            elif concat_cells == char + char + " ":
+                empty_cell_row, empty_cell_column = i, 2
+                break
+            
+            #Find single empty cell in ith column
+            if empty_cell_row == None:
+                concat_cells = board[0, i] + board[1, i] + board[2, i]
+                if concat_cells == " " + char + char:
+                    empty_cell_row, empty_cell_column = 0, i
+                    break
+                elif concat_cells == char + " " + char:
+                    empty_cell_row, empty_cell_column = 1, i
+                    break
+                elif concat_cells == char + char + " ":
+                    empty_cell_row, empty_cell_column = 2, i
+                    break
+            
+        #Finds single empty cell in diagonal from top-left corner to bottom-right corner
+        if empty_cell_row == None:
+            concat_cells = board[0, 0] + board[1, 1] + board[2, 2]
+            if concat_cells == " " + char + char:
+                empty_cell_row, empty_cell_column = 0, 0
+            elif concat_cells == char + " " + char:
+                empty_cell_row, empty_cell_column = 1, 1
+            elif concat_cells == char + char + " ":
+                empty_cell_row, empty_cell_column = 2, 2
+        
+        #Finds single empty cell in diagonal from top-right corner to bottom-left corner
+        if empty_cell_row == None:
+            concat_cells = board[0, 2] + board[1, 1] + board[2, 0]
+            if concat_cells == " " + char + char:
+                empty_cell_row, empty_cell_column = 0, 2
+            elif concat_cells == char + " " + char:
+                empty_cell_row, empty_cell_column = 1, 1
+            elif concat_cells == char + char + " ":
+                empty_cell_row, empty_cell_column = 2, 0
+        return empty_cell_row, empty_cell_column
 
 
 tic_tac_toe = TicTacToe()
