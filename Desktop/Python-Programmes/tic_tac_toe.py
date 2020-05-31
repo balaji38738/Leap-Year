@@ -5,40 +5,47 @@ print("-------Tic Tac Toe-------")
 user_char = "x"
 comp_char = "o"
 filled_cells = 0
+TOTAL_COLUMNS = 3
+TOTAL_ROWS = 3
 
 board = np.empty((3,3), dtype=str)
 
-#Starts a fresh board
-def reset_board():
-    print("\nNew game starts")
-    global filled_cells
-    filled_cells = 0
-    for row in range(3):
-        for column in range(3):
-            board[row][column] = " "
+class TicTacToe:
 
-def coin_toss():
-    face = random.choice(["HEAD", "TAIL"])
-    if face == "HEAD":
-        print("Your turn first")
-    else:
-        print("Computer's turn first")
-    return face
+    #Starts a fresh board
+    def reset_board(self):
+        print("\nNew game starts")
+        global filled_cells
+        filled_cells = 0
+        for row in range(TOTAL_ROWS):
+            for column in range(TOTAL_COLUMNS):
+                board[row][column] = " "
 
-def display_board():
-    for row in range(3):
-        for column in range(3):
-            print(board[row, column], end=" ")
-            if column != 2:
-                print("|", end="")
-        if row != 2:
-            print("\n--------")
-    print("\n")
+    def coin_toss(self):
+        face = random.choice(["HEAD", "TAIL"])
+        if face == "HEAD":
+            print("Your turn first")
+        else:
+            print("Computer's turn first")
+        return face
 
-def play_game():
-    print("You are assigned", user_char)
-    coin_toss()
+    def display_board(self):
+        for row in range(TOTAL_ROWS):
+            for column in range(TOTAL_COLUMNS):
+                print(board[row, column], end=" ")
+                if column != TOTAL_COLUMNS - 1:
+                    print("|", end="")
+            if row != TOTAL_ROWS - 1:
+                print("\n--------")
+        print("\n")
 
-reset_board()
-display_board()
-play_game()
+    #Starts a new game
+    def play_game(self):
+        print("You are assigned", user_char)
+        self.coin_toss()
+
+
+tic_tac_toe = TicTacToe()
+tic_tac_toe.reset_board()
+tic_tac_toe.display_board()
+tic_tac_toe.play_game()
