@@ -7,6 +7,8 @@ comp_char = "o"
 filled_cells = 0
 TOTAL_COLUMNS = 3
 TOTAL_ROWS = 3
+USER = 0
+COMP = 1
 
 board = np.empty((3,3), dtype=str)
 
@@ -43,6 +45,19 @@ class TicTacToe:
     def play_game(self):
         print("You are assigned", user_char)
         self.coin_toss()
+
+    #Checks equality of three cells & finds the winner if any
+    def are_three_equal(
+            self, cell1,
+            cell2, cell3):
+        if cell1 != " ":
+            if cell1 == cell2 and cell2 == cell3:
+                self.is_won = True
+                if cell1 == user_char:
+                    winner = USER
+                else:
+                    winner = COMP
+
 
 
 tic_tac_toe = TicTacToe()
