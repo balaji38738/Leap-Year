@@ -157,6 +157,19 @@ class TicTacToe:
             is_empty_corner = False
         return is_empty_corner
 
+    def fill_side(self):
+        is_empty_side = True
+        if board[0, 1] == " ":
+            self.fill_cell(comp_char, 0, 1)
+        elif board[1, 0] == " ":
+            self.fill_cell(comp_char, 1, 0)
+        elif board[1, 2] == " ":
+            self.fill_cell(comp_char, 1, 2)
+        elif board[2, 1] == " ":
+            self.fill_cell(comp_char, 2, 1)
+        else:
+            is_empty_side = False
+        return is_empty_side
 
 tic_tac_toe = TicTacToe()
 tic_tac_toe.reset_board()
