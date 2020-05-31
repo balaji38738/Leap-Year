@@ -58,6 +58,28 @@ class TicTacToe:
                 else:
                     self.winner = COMP
 
+    #Finds if anyone won
+    def check_if_game_won(self):
+        self.is_won = False
+        for i in range(TOTAL_ROWS):
+
+            #Method call to check equality of ith row 
+            self.are_three_equal(board[i, 0], board[i, 1], board[i, 2])
+
+            #Method call to check equality of ith column
+            self.are_three_equal(board[0, i], board[1, i], board[2, i])
+        
+        #Method calls to check equality of diagonals
+        self.are_three_equal(board[0, 0], board[1, 1], board[2, 2])
+        self.are_three_equal(board[0, 2], board[1, 1], board[2, 0])
+
+        if self.is_won == True:
+            if self.winner == USER:
+                print("You won")
+            else:
+                print("Computer won")
+        elif filled_cells == 9:
+            print("Game Tie")
 
 
 tic_tac_toe = TicTacToe()
