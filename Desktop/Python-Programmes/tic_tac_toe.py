@@ -172,12 +172,17 @@ class TicTacToe:
 
         #Loop until user gives valid input
         while True:
-            user_row, user_column = [int(i) for i in input("Enter row (0-2) and column(0-2): ").split()]
-            if board[user_row, user_column] == " ":
-                self.fill_cell(user_char, user_row, user_column)
-                break
-            else:
-                print("The cell is already filled")
+            try:
+                user_row, user_column = [int(i) for i in input("Enter row (0-2) and column(0-2): ").split()]
+                if board[user_row, user_column] == " ":
+                    self.fill_cell(user_char, user_row, user_column)
+                    break
+                else:
+                    print("The cell is already filled")
+            except ValueError:
+                print("Invalid type or number of arguments")
+            except IndexError:
+                print("Row no & column no must be in range (0-2)")
 
     #Starts a new game
     def play_game(self):
