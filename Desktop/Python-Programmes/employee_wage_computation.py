@@ -1,8 +1,20 @@
 import random
+from abc import ABC, abstractmethod
 
 print("Welcome to employee wage computation")
 
-class EmployeeWageComputation:
+class Computable(ABC):
+    @abstractmethod
+    def compute_emp_wage(self, employee):
+        pass
+
+    @abstractmethod
+    def display_daily_wage(
+            self, total_working_days,
+            emp_hours, emp_wage):
+        pass
+
+class EmployeeWageComputation(Computable):
         #constants
         __IS_FULL_TIME = 1
         __IS_PART_TIME = 2
