@@ -3,6 +3,12 @@ from abc import ABC, abstractmethod
 
 print("Welcome to employee wage computation")
 
+class InvalidInputError(Exception):
+    def __init__(self, message = "Input should be (y/n)"):
+        self.message = message
+        super().__init__(self.message)
+
+
 class Computable(ABC):
     @abstractmethod
     def compute_emp_wage(self, employee):
@@ -13,6 +19,7 @@ class Computable(ABC):
             self, total_working_days,
             emp_hours, emp_wage):
         pass
+
 
 class EmployeeWageComputation(Computable):
         #constants
@@ -108,6 +115,8 @@ while user_input == "y":
                                         max_hours_in_month)
     employee_list.append(company_employee)
     user_input = input("Employee added, do you want to add more ?(y/n): ")
+    if user_input not in ["y", "n"]:
+        raise InvalidInputError()
 
 EmployeeWageComputation.compute_emp_wage(employee_list)
 EmployeeWageComputation.display_employee_wage(employee_list)
