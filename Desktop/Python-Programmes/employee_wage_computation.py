@@ -28,9 +28,7 @@ class EmployeeWageComputation(Computable):
 
         @staticmethod
         def compute_emp_wage(employee_list):
-            company_no = 0
             for employee in employee_list:
-                company_no += 1
                 MAX_HOURS_IN_MONTH = employee.get_max_hours_in_month()
                 NUM_WORKING_DAYS = employee.get_num_working_days()
                 EMP_RATE_PER_HOUR = employee.get_emp_rate_per_hour()
@@ -120,3 +118,11 @@ while user_input == "y":
 
 EmployeeWageComputation.compute_emp_wage(employee_list)
 EmployeeWageComputation.display_employee_wage(employee_list)
+
+#Get the total employee wage when queried by the user
+employee_no = int(input("Enter employee number to get total wage: "))
+if employee_no > 0 and employee_no <= len(employee_list):
+    print("\nTotal wage of employee", employee_no, end=": ")
+    print(employee_list[employee_no - 1].get_total_emp_wage())
+else:
+    print("Employee not found")
