@@ -1,5 +1,5 @@
 import random
-from abc import ABC, abstractmethod
+from abc import ABC, abstractstaticmethod
 
 print("Welcome to employee wage computation")
 
@@ -10,13 +10,13 @@ class InvalidInputError(Exception):
 
 
 class Computable(ABC):
-    @abstractmethod
-    def compute_emp_wage(self, employee):
+    @abstractstaticmethod
+    def compute_emp_wage(employee):
         pass
 
-    @abstractmethod
+    @abstractstaticmethod
     def display_daily_wage(
-            self, total_working_days,
+            total_working_days,
             emp_hours, emp_wage):
         pass
 
@@ -120,9 +120,12 @@ EmployeeWageComputation.compute_emp_wage(employee_list)
 EmployeeWageComputation.display_employee_wage(employee_list)
 
 #Get the total employee wage when queried by the user
-employee_no = int(input("Enter employee number to get total wage: "))
-if employee_no > 0 and employee_no <= len(employee_list):
-    print("\nTotal wage of employee", employee_no, end=": ")
-    print(employee_list[employee_no - 1].get_total_emp_wage())
-else:
-    print("Employee not found")
+try:
+    employee_no = int(input("Enter employee number to get total wage: "))
+    if employee_no > 0 and employee_no <= len(employee_list):
+        print("\nTotal wage of employee", employee_no, end=": ")
+        print(employee_list[employee_no - 1].get_total_emp_wage())
+    else:
+        print("Employee not found")
+except ValueError:
+    print("Employee number should be integer")
