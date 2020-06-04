@@ -2,7 +2,7 @@ import re
 print("PIN validation programme")
 
 class PINValidator:
-    pattern = r"[0-9]{6}"
+    pattern = r"^[0-9]{6}"
 
     @staticmethod
     def validate_pin(pin):
