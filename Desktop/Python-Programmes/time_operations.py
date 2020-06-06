@@ -12,6 +12,8 @@ class Time:
         return f"{self.__hour}:{self.__minute:02d}:{self.__sec:02d}"
 
     def __add__(self, time):
+
+        #Converted total time in sec
         total_time_sec = ((self.__hour + time.__hour) * 3600
                             + (self.__minute + time.__minute) * 60
                             + self.__sec + time.__sec)
@@ -19,6 +21,7 @@ class Time:
         total_minutes = total_time_sec % 3600 // 60
         total_sec = total_time_sec % 60
         return Time(total_hours, total_minutes, total_sec)
+
 
 times = [None, None]
 time_no = 0
@@ -32,4 +35,4 @@ while time_no < len(times):
         print("All values of time should be integers")
         continue
 
-print("Addition of two times =", times[0] + times[1])   
+print("Addition of two times =", times[0] + times[1]) 
