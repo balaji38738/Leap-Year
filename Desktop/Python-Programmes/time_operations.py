@@ -19,7 +19,17 @@ class Time:
         total_minutes = total_time_sec % 3600 // 60
         total_sec = total_time_sec % 60
         return Time(total_hours, total_minutes, total_sec)
-    
-time1 = Time(12, 13, 13)
-time2 = Time(13, 54, 55)
-print(time1 + time2)
+
+times = [None, None]
+time_no = 0
+while time_no < len(times):
+    try:
+        print(f"Enter time %d in format- hour:min:sec" % (time_no + 1))
+        hour, minute, sec = [int(i) for i in input().split(":")]
+        times[time_no] = Time(hour, minute, sec)
+        time_no += 1
+    except ValueError:
+        print("All values of time should be integers")
+        continue
+
+print("Addition of two times =", times[0] + times[1])   
