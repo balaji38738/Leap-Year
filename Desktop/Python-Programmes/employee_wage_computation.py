@@ -1,5 +1,5 @@
 import random
-from abc import ABC, abstractmethod, abstractclassmethod
+from abc import ABC, abstractclassmethod
 
 print("Welcome to employee wage computation")
 
