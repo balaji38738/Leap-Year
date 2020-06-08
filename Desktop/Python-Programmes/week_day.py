@@ -22,21 +22,27 @@ class WeekDay:
         return "Saturday"
 
     def default(self):
-        return "Incorrect day"
+        return "Invalid day number"
 
-    days = {
-        1: get_sunday,
-        2: get_monday,
-        3: get_tuesday,
-        4: get_wednesday,
-        5: get_thursday,
-        6: get_friday,
-        7: get_saturday
-    }
     
     def get_week_day(self, day_number):
-        return WeekDay.days.get(day_number, self.default())(self)
+        days = {
+            1: self.get_sunday,
+            2: self.get_monday,
+            3: self.get_tuesday,
+            4: self.get_wednesday,
+            5: self.get_thursday,
+            6: self.get_friday,
+            7: self.get_saturday
+        }
+        return days.get(day_number, self.default)()
 
-week_day = WeekDay()
-day = week_day.get_week_day(3)
-print(day)
+try:
+    day_number = int(input("Enter day number: "))
+    week_day = WeekDay()
+    day = week_day.get_week_day(day_number)
+    if (day != "Invalid day number"):
+        print("Day", day_number, "of the week is", end=" ")
+    print(day)
+except ValueError:
+    print("Value should be integer")
