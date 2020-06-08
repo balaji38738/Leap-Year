@@ -7,25 +7,25 @@ FINISH = 100
 print("Starting position is", START)
 
 class SnakeAndLadder:
-    def __init__(self, player):
-        self.__player = player
+    def __init__(self, players_list):
+        self.__players_list = players_list
+        self.__current_player_index = 0
 
     def dice_roll(self):
         return random.randint(1, 6)
 
     def increment_position(self, player, dice_value):
-        print("Ladder")
+        print("\nPlayer:", player.get_name(), "| Move: Ladder | Dice value:", dice_value)
         position = player.get_position() + dice_value
         player.set_position(position)
 
     def decrement_position(self, player, dice_value):
+        print("\nPlayer:", player.get_name(), "| Move: Snake | Dice value:", dice_value)
         position = player.get_position() - dice_value
-        print("Snake")
         player.set_position(position)
 
     def no_play(self, player, dice_value):
-        print("No play")
-        pass
+        print("\nPlayer:", player.get_name(), "| Move: No play | Dice value:", dice_value)
 
     def move_player(self, player, dice_value):
         SNAKE = 1
@@ -39,8 +39,28 @@ class SnakeAndLadder:
         move = random.randint(1, 3)
         move_options[move](player, dice_value)
 
-    def print_position(self, player):
-        print(player.get_name(), player.get_position())
+    def print_positions(self):
+        for player in self.__players_list:
+            print(player.get_name(), ":", player.get_position())
+
+    def change_turn(self):
+        self.__current_player_index += 1
+        self.__current_player_index %= len(self.__players_list)
+
+    def get_current_player_index(self):
+        return self.__current_player_index
+
+    def get_won_players(self):
+        player_positions = map(lambda player: player.get_position(), self.__players_list)
+        won_players = filter(lambda position: position == FINISH, player_positions)
+        return won_players
+    
+    def is_finished(self):
+        won_players = self.get_won_players()
+        if len(list(won_players)) == len(self.__players_list) - 1:
+            return True
+        else:
+            return False
 
 
 class Player:
@@ -59,14 +79,15 @@ class Player:
         return self.__name
 
 
-balaji = Player("Balaji")
-snake_ladder = SnakeAndLadder(balaji)
+players_list = (Player("Balaji"), Player("Sagar"))
+snake_ladder = SnakeAndLadder(players_list)
 rolls = 0
-while balaji.get_position() != FINISH:
+while not snake_ladder.is_finished():
+    current_player = snake_ladder.get_current_player_index()
     dice_value = snake_ladder.dice_roll()
-    snake_ladder.move_player(balaji, dice_value)
-    snake_ladder.print_position(balaji)
+    snake_ladder.move_player(players_list[current_player], dice_value)
+    snake_ladder.print_positions()
+    snake_ladder.change_turn()
     rolls += 1
-print(rolls)
-
+print("Total dice rolls =", rolls)
     
