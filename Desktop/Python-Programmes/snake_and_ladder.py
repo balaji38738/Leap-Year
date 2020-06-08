@@ -3,6 +3,7 @@ import random
 print("Snake And Ladder")
 print("----------------")
 START = 0
+FINISH = 100
 print("Starting position is", START)
 
 class SnakeAndLadder:
@@ -12,24 +13,24 @@ class SnakeAndLadder:
     def dice_roll(self):
         return random.randint(1, 6)
 
-    def print_dice_value(self):
-        print(f"Dice value is: {self.dice_roll()}")
-
     def increment_position(self, player, dice_value):
+        print("Ladder")
         position = player.get_position() + dice_value
         player.set_position(position)
 
     def decrement_position(self, player, dice_value):
         position = player.get_position() - dice_value
+        print("Snake")
         player.set_position(position)
 
     def no_play(self, player, dice_value):
+        print("No play")
         pass
 
     def move_player(self, player, dice_value):
         SNAKE = 1
         LADDER = 2
-        NO_PLAY= 3
+        NO_PLAY = 3
         move_options = {
            LADDER: self.increment_position,
            SNAKE: self.decrement_position,
@@ -60,5 +61,12 @@ class Player:
 
 balaji = Player("Balaji")
 snake_ladder = SnakeAndLadder(balaji)
-snake_ladder.print_dice_value()
+rolls = 0
+while balaji.get_position() != FINISH:
+    dice_value = snake_ladder.dice_roll()
+    snake_ladder.move_player(balaji, dice_value)
+    snake_ladder.print_position(balaji)
+    rolls += 1
+print(rolls)
+
     
