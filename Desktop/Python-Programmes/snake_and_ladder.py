@@ -79,6 +79,8 @@ snake_ladder = SnakeAndLadder(players_list)
 rolls = 0
 while not snake_ladder.is_finished():
     current_player = snake_ladder.get_current_player_index()
+    print(players_list[current_player].get_name(), "'s turn", sep="")
+    input("Press Enter to roll the dice: ")
     dice_value = snake_ladder.dice_roll()
     snake_ladder.move_player(players_list[current_player], dice_value)
     snake_ladder.print_positions()
@@ -87,4 +89,3 @@ while not snake_ladder.is_finished():
 print("Total dice rolls =", rolls)
 lost_player = snake_ladder.get_unfinished_players()[0]
 print(lost_player.get_name(), "lost the game")
-    
