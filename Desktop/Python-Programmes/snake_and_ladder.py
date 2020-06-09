@@ -50,18 +50,13 @@ class SnakeAndLadder:
     def get_current_player_index(self):
         return self.__current_player_index
 
-    def get_won_players(self):
-        player_positions = map(lambda player: player.get_position(), self.__players_list)
-        won_players = filter(lambda position: position == FINISH, player_positions)
-        return won_players
+    def get_unfinished_players(self):
+         return list(filter(lambda player: player.get_position() != FINISH,
+                    self.__players_list))
     
     def is_finished(self):
-        won_players = self.get_won_players()
-        if len(list(won_players)) == len(self.__players_list) - 1:
-            return True
-        else:
-            return False
-
+        unfinished_players = self.get_unfinished_players()
+        return len(unfinished_players) == 1
 
 class Player:
     def __init__(self, name):
@@ -90,4 +85,6 @@ while not snake_ladder.is_finished():
     snake_ladder.change_turn()
     rolls += 1
 print("Total dice rolls =", rolls)
+lost_player = snake_ladder.get_unfinished_players()[0]
+print(lost_player.get_name(), "lost the game")
     
