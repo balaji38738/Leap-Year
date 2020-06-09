@@ -4,10 +4,7 @@ class BalancedParanthesesChecker:
 
     @classmethod
     def is_valid_expression(cls, expression):
-        if set(expression).issubset(cls.brackets_set):
-            return True
-        else:
-            return False
+        return set(expression).issubset(cls.brackets_set)
 
     @classmethod
     def is_balanced(cls, expression):
