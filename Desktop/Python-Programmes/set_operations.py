@@ -1,3 +1,5 @@
+import copy
+
 my_set = set([1, 2, 3, 4])
 my_set2 = {1, 2, 5, 6}
 
@@ -32,3 +34,7 @@ print("Symmetric difference of", my_set, my_set2, "=", my_set.symmetric_differen
 print(my_set, "is subset of", my_set3, "=", my_set.issubset(my_set3))
 
 print(my_set, "is superset of", my_set3, "=", my_set.issuperset(my_set3))
+
+print("Shallow copy of", my_set2, "=", my_set2.copy())
+
+print("Deep copy of", my_set2, "=", copy.deepcopy(my_set2))
