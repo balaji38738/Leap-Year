@@ -1,0 +1,65 @@
+[
+    {
+        "Doctor Name": "Satish Dhavan",
+        "Doctor Id": 1,
+        "Specialisation": "Dermatologist",
+        "Availability": [
+            {
+                "Start Time": "10:00",
+                "End Time": "02:00"
+            },
+            {
+                "Start Time": "04:00",
+                "End Time": "20:00:"
+            }
+        ]
+    },
+    {
+        "Doctor Name": "Pranab Kapoor",
+        "Doctor Id": 2,
+        "Specialisation": "Opthalmologist",
+        "Availability": [
+            {
+                "Start Time": "09:00",
+                "End Time": "13:00"
+            },
+            {
+                "Start Time": "17:00",
+                "End Time": "22:00"
+            }
+        ]
+    },
+    {
+        "Doctor Name": "Ashish Kumar",
+        "Doctor Id": 3,
+        "Specialisation": "Endocrinologist",
+        "Availability": [
+            {
+                "Start Time": "12:00",
+                "End Time": "20:00"
+            }
+        ]
+    },
+    {
+        "Doctor Name": "Kalpana Munde",
+        "Doctor Id": 4,
+        "Specialisation": "Gastroenterologist",
+        "Availability": [
+            {
+                "Start Time": "01:00",
+                "End Time": "19:30"
+            }
+        ]
+    },
+    {
+        "Doctor Name": "Satish More",
+        "Doctor Id": 5,
+        "Specialisation": "Pulmonologist",
+        "Availability": [
+            {
+                "Start Time": "01:00",
+                "End Time": "07:00"
+            }
+        ]
+    }
+]
