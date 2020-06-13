@@ -1,6 +1,9 @@
 import json
 
+
 class FileHandler:
+    """Reads and writes files of clinique"""
+
     def read_file(self, file_path):
         with open(file_path) as clinique_file:
             file_data = json.load(clinique_file)
@@ -13,10 +16,13 @@ class FileHandler:
             json.dump(file_data, clinique_file, indent=4)
 
 
-file_hanler = FileHandler()
-doctor_data = file_hanler.read_file("doctor_data.json")
-print(doctor_data)
-patient = {"Patient Name": "Mahesh Munde", "Id": 1, "Mobile": 7588842796, "Age": 24}
-file_hanler.write_file("patient_data.json", patient)
-patient_data = file_hanler.read_file("patient_data.json")
-print(patient_data)
+class CliniqueManagement:
+    def __init__(self):
+        self.file_hanler = FileHandler()
+        self.doctor_data = self.file_hanler.read_file("doctor_data.json")
+
+    def search_doctor(self, key):
+        for doctor in self.doctor_data:
+            if ((doctor["Doctor Name"] == key)
+                    or (doctor["Doctor Id"] == key)):
+                return doctor
