@@ -1,4 +1,5 @@
 import json
+from mood_analysis_error import MoodAnalysisError
 
 class FileHandler:
     def read_file(self, file_path):
@@ -21,7 +22,7 @@ class MoodAnalyser:
             else:
                 return "Invalid mood"
         except AttributeError:
-            return "happy"
+            raise MoodAnalysisError("Invalid message")
 
 
 messages = FileHandler().read_file("messages.json")
