@@ -1,4 +1,4 @@
 import json
 
-student = '{"Name": "Balaji", "Branch": "E&Tc"}'
-print(json.loads(student))
+student_data = '{"Name": "Balaji", "Branch": "E&Tc"}'
+print(json.loads(student_data))
