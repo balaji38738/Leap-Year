@@ -9,7 +9,8 @@ class FileHandler:
 
 class MoodAnalyser:
     def analyse_mood(self, message):
-        if message.find("happy") != -1:
+        if ((message.find("happy") != -1)
+                or (message.find("any") != -1)):
             return "happy"
         elif message.find("sad") != -1:
             return "sad"
