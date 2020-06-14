@@ -48,3 +48,27 @@ class CliniqueManagement:
                         and (time < time_frame["End Time"])):
                     relevant_doctors.append(doctor)
         return relevant_doctors
+
+    def search_patient_by_name(self, name):
+        relevant_patients = []
+        patients = self.file_hanler.read_file("patient_data.json")
+        for patient in patients:
+            if patient["Patient Name"].find(name) != -1:
+                relevant_patients.append(patient)
+        return relevant_patients
+    
+    def search_patient_by_id(self, id):
+        relevant_patients = []
+        patients = self.file_hanler.read_file("patient_data.json")
+        for patient in patients:
+            if patient["Patient Id"] == id:
+                relevant_patients.append(patient)
+        return relevant_patients
+
+    def search_patient_by_mobile(self, mobile):
+        relevant_patients = []
+        patients = self.file_hanler.read_file("patient_data.json")
+        for patient in patients:
+            if patient["Mobile"] == mobile:
+                relevant_patients.append(patient)
+        return relevant_patients
