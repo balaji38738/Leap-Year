@@ -14,7 +14,9 @@ class MoodAnalyser:
 
     def analyse_mood(self):
         try:
-            if ((self.message.find("happy") != -1)
+            if self.message == "":
+                raise MoodAnalysisError(MoodAnalysisError.ExceptionType.EMPTY, "Empty mood")
+            elif ((self.message.find("happy") != -1)
                     or (self.message.find("any") != -1)):
                 return "happy"
             elif self.message.find("sad") != -1:
@@ -22,7 +24,7 @@ class MoodAnalyser:
             else:
                 return "Invalid mood"
         except AttributeError:
-            raise MoodAnalysisError("Invalid message")
+            raise MoodAnalysisError(MoodAnalysisError.ExceptionType.NONE, "Invalid message")
 
 
 messages = FileHandler().read_file("messages.json")
