@@ -6,5 +6,21 @@ class FileHandler:
             moods = json.load(moods_file)
         return moods
 
-file_handler = FileHandler()
-print(file_handler.read_file("moods.json"))
+
+class MoodAnalyser:
+    def __init__(self, file_path):
+        self.file_handler = FileHandler()
+        self.moods = self.file_handler.read_file(file_path)
+
+    def analyse_mood(self, message):
+        if message.find(self.moods[0]["mood"]) != -1:
+            return "happy"
+        elif message.find(self.moods[1]["mood"]) != -1:
+            return "sad"
+        else:
+            return "Invalid mood"
+
+mood_analyser = MoodAnalyser("moods.json")
+print(mood_analyser.analyse_mood("I am happy"))
+print(mood_analyser.analyse_mood("I am sad"))  
+print(mood_analyser.analyse_mood("I am angry"))     
