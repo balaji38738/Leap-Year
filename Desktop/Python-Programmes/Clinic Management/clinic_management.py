@@ -37,6 +37,14 @@ class CliniqueManagement:
     
     def search_doctor_by_id(self, id):
         for doctor in self.doctor_data:
-            if doctor["Doctor Id"].find(id) != -1:
+            if doctor["Doctor Id"] == id:
                 return doctor
                 
+    def search_doctor_by_availabilty(self, time):
+        relevant_doctors = []
+        for doctor in self.doctor_data:
+            for time_frame in doctor["Availabilty"]:
+                if ((time > time_frame["Start Time"])
+                        and (time < time_frame["End Time"])):
+                    relevant_doctors.append(doctor)
+        return relevant_doctors
