@@ -12,13 +12,16 @@ class MoodAnalyser:
         self.message = message
 
     def analyse_mood(self):
-        if ((self.message.find("happy") != -1)
-                or (self.message.find("any") != -1)):
+        try:
+            if ((self.message.find("happy") != -1)
+                    or (self.message.find("any") != -1)):
+                return "happy"
+            elif self.message.find("sad") != -1:
+                return "sad"
+            else:
+                return "Invalid mood"
+        except AttributeError:
             return "happy"
-        elif self.message.find("sad") != -1:
-            return "sad"
-        else:
-            return "Invalid mood"
 
 
 messages = FileHandler().read_file("messages.json")
