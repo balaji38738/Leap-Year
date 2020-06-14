@@ -1,5 +1,5 @@
 import json
-
+import re
 
 class FileHandler:
     """Reads and writes files of clinique"""
@@ -21,8 +21,22 @@ class CliniqueManagement:
         self.file_hanler = FileHandler()
         self.doctor_data = self.file_hanler.read_file("doctor_data.json")
 
-    def search_doctor(self, key):
+    def search_doctor_by_name(self, name):
+        relevant_doctors = []
         for doctor in self.doctor_data:
-            if ((doctor["Doctor Name"] == key)
-                    or (doctor["Doctor Id"] == key)):
+            if doctor["Doctor Name"].find(name) != -1:
+                relevant_doctors.append(doctor)
+        return relevant_doctors
+
+    def search_doctor_by_specialisation(self, specialisation):
+        relevant_doctors = []
+        for doctor in self.doctor_data:
+            if doctor["Specialisation"].find(specialisation) != -1:
+                relevant_doctors.append(doctor)
+        return relevant_doctors
+    
+    def search_doctor_by_id(self, id):
+        for doctor in self.doctor_data:
+            if doctor["Doctor Id"].find(id) != -1:
                 return doctor
+                
