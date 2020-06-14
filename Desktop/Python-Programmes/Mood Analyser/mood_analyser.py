@@ -8,18 +8,21 @@ class FileHandler:
 
 
 class MoodAnalyser:
-    def analyse_mood(self, message):
-        if ((message.find("happy") != -1)
-                or (message.find("any") != -1)):
+    def __init__(self, message):
+        self.message = message
+
+    def analyse_mood(self):
+        if ((self.message.find("happy") != -1)
+                or (self.message.find("any") != -1)):
             return "happy"
-        elif message.find("sad") != -1:
+        elif self.message.find("sad") != -1:
             return "sad"
         else:
             return "Invalid mood"
 
 
 messages = FileHandler().read_file("messages.json")
-mood_analyser = MoodAnalyser()
 for message in messages:
-    mood = mood_analyser.analyse_mood(message["message"])
+    mood_analyser = MoodAnalyser(message["message"])
+    mood = mood_analyser.analyse_mood()
     print(mood)
