@@ -15,7 +15,7 @@ class MoodAnalyser:
     def analyse_mood(self):
         try:
             if self.message == "":
-                raise MoodAnalysisError(MoodAnalysisError.ExceptionType.EMPTY, "Empty mood")
+                raise MoodAnalysisError(MoodAnalysisError.ExceptionType.EMPTY, "Please provide mood")
             elif ((self.message.find("happy") != -1)
                     or (self.message.find("any") != -1)):
                 return "happy"
