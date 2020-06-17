@@ -1,6 +1,5 @@
 import json
 from mood_analysis_error import MoodAnalysisError
-from mood_analyser_factory import MoodAnalyserFactory
 
 class FileHandler:
     def read_file(self, file_path):
@@ -13,7 +12,9 @@ class MoodAnalyser:
     def __init__(self, message=""):
         self.message = message
 
-    def analyse_mood(self):
+    def analyse_mood(self, message=""):
+        if self.message == "":
+            self.message = message
         try:
             if self.message == "":
                 raise MoodAnalysisError(MoodAnalysisError.ExceptionType.EMPTY, "Please provide mood")
@@ -26,15 +27,3 @@ class MoodAnalyser:
                 return "Invalid mood"
         except AttributeError:
             raise MoodAnalysisError(MoodAnalysisError.ExceptionType.NONE, "Invalid message")
-
-
-messages = FileHandler().read_file("messages.json")
-for message in messages:
-    mood_analyser = MoodAnalyser(message["message"])
-    mood = mood_analyser.analyse_mood()
-    print(mood)
-
-try:
-    obj = MoodAnalyserFactory.get_mood_analyser_object("mood_analyser")
-except MoodAnalysisError:
-    print("Class Not Found")
