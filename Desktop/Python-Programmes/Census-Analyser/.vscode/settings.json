@@ -1,0 +1,5 @@
+{
+    "python.pythonPath": "/home/balaji/Desktop/Python-Programmes/mypython/bin/python3.7",
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true
+}
