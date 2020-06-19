@@ -1,11 +1,16 @@
 import pandas as pd
 from census_analyser_exception import CensusAnalyserError
 from csv_state_census import CSVStateCensus
+import os
 
 class CensusAnalyser:
     
     # Method to load csv data and count entries
     def load_india_census_data(self, csv_file_path):
+        filename, extension = os.path.splitext(csv_file_path)
+        if extension != ".csv":
+            raise CensusAnalyserError(CensusAnalyserError.ExceptionType.WRONG_EXTENSION,
+                                    "File should be csv file")
         try:
             india_census = pd.read_csv(
                         csv_file_path,
