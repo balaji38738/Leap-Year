@@ -16,3 +16,6 @@ class CensusAnalyser:
         except FileNotFoundError:
             raise CensusAnalyserError(CensusAnalyserError.ExceptionType.FILE_NOT_FOUND,
                                     "File not found")
+        except ValueError:
+            raise CensusAnalyserError(CensusAnalyserError.ExceptionType.WRONG_DELIMITER,
+                                    "File should have comma delimiter")

@@ -26,4 +26,4 @@ class TestCensusAnalyser:
             num_of_records = census_analyser.load_india_census_data(
                             TestCensusAnalyser.CENSUS_WRONG_DELIMITER_FILE)
         except CensusAnalyserError as exception:
-            assert exception.exception_type == CensusAnalyserError.ExceptionType.FILE_NOT_FOUND
+            assert exception.exception_type == CensusAnalyserError.ExceptionType.WRONG_DELIMITER
