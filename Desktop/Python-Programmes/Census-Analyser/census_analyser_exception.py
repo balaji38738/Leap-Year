@@ -5,6 +5,7 @@ class CensusAnalyserError(Exception):
         FILE_NOT_FOUND = 1
         WRONG_DELIMITER = 2
         WRONG_EXTENSION = 3
+        WRONG_HEADER = 4
 
     def __init__(self, exception_type, message):
         self.message = message

@@ -6,6 +6,7 @@ class TestCensusAnalyser:
     CENSUS_WRONG_CSV_FILE_PATH = "/home/IndiaStateCensusData.csv"
     CENSUS_WRONG_DELIMITER_FILE = "CensusInvalidDelimiter.csv"
     CENSUS_WRONG_EXTENSION_FILE = "IndiaStateCensusData.txt"
+    CENSUS_WRONG_HEADER_FILE = "CensusWrongHeader.csv"
 
     def test_given_indian_census_CSV_file_returns_correct_records(self):
         census_analyser = CensusAnalyser()
@@ -36,3 +37,11 @@ class TestCensusAnalyser:
                             TestCensusAnalyser.CENSUS_WRONG_EXTENSION_FILE)
         except CensusAnalyserError as exception:
             assert exception.exception_type == CensusAnalyserError.ExceptionType.WRONG_EXTENSION
+
+    def test_given_india_census_file_with_wrong_header_should_throw_exception(self):
+        try:
+            census_analyser = CensusAnalyser()
+            num_of_records = census_analyser.load_india_census_data(
+                            TestCensusAnalyser.CENSUS_WRONG_HEADER_FILE)
+        except CensusAnalyserError as exception:
+            assert exception.exception_type == CensusAnalyserError.ExceptionType.WRONG_HEADER

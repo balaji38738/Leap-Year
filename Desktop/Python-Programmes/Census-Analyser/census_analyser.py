@@ -1,4 +1,5 @@
 import pandas as pd
+import csv
 from census_analyser_exception import CensusAnalyserError
 from csv_state_census import CSVStateCensus
 import os
