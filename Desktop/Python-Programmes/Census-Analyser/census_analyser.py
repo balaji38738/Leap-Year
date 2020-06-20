@@ -12,6 +12,13 @@ class CensusAnalyser:
         if extension != ".csv":
             raise CensusAnalyserError(CensusAnalyserError.ExceptionType.WRONG_EXTENSION,
                                     "File should be csv file")
+        else:
+            with open(csv_file_path) as csv_file:
+                reader = csv.reader(csv_file)
+                headers = next(reader)
+            if headers != CSVStateCensus.get_census_headers():
+                raise CensusAnalyserError(CensusAnalyserError.ExceptionType.WRONG_HEADER,
+                                        "csv file has wrong headers")
         try:
             india_census = pd.read_csv(
                         csv_file_path,
