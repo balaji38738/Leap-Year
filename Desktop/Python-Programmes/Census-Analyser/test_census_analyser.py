@@ -18,76 +18,49 @@ class TestCensusAnalyser:
 
     def test_given_indian_census_CSV_file_returns_correct_records(self):
         census_analyser = CensusAnalyser()
-        num_of_records = census_analyser.load_india_census_data(
+        census_num_of_records = census_analyser.load_india_census_data(
                         TestCensusAnalyser.CENSUS_CSV_FILE_PATH, CSVStateCensus)
-        assert num_of_records == 29
-
-    def test_given_india_census_file_with_wrong_path_should_throw_exception(self):
-        try:
-            census_analyser = CensusAnalyser()
-            num_of_records = census_analyser.load_india_census_data(
-                            TestCensusAnalyser.CENSUS_WRONG_CSV_FILE_PATH, CSVStateCensus)
-        except CensusAnalyserError as exception:
-            assert exception.exception_type == CensusAnalyserError.ExceptionType.FILE_NOT_FOUND
-
-    def test_given_india_census_file_with_wrong_delimiter_should_throw_exception(self):
-        try:
-            census_analyser = CensusAnalyser()
-            num_of_records = census_analyser.load_india_census_data(
-                            TestCensusAnalyser.CENSUS_WRONG_DELIMITER_FILE, CSVStateCensus)
-        except CensusAnalyserError as exception:
-            assert exception.exception_type == CensusAnalyserError.ExceptionType.WRONG_DELIMITER
-
-    def test_given_india_census_file_with_wrong_extension_should_throw_exception(self):
-        try:
-            census_analyser = CensusAnalyser()
-            num_of_records = census_analyser.load_india_census_data(
-                            TestCensusAnalyser.CENSUS_WRONG_EXTENSION_FILE, CSVStateCensus)
-        except CensusAnalyserError as exception:
-            assert exception.exception_type == CensusAnalyserError.ExceptionType.WRONG_EXTENSION
-
-    def test_given_india_census_file_with_wrong_header_should_throw_exception(self):
-        try:
-            census_analyser = CensusAnalyser()
-            num_of_records = census_analyser.load_india_census_data(
-                            TestCensusAnalyser.CENSUS_WRONG_HEADER_FILE, CSVStateCensus)
-        except CensusAnalyserError as exception:
-            assert exception.exception_type == CensusAnalyserError.ExceptionType.WRONG_HEADER
-
-    def test_given_state_code_CSV_file_returns_correct_records(self):
-        census_analyser = CensusAnalyser()
-        num_of_records = census_analyser.load_india_census_data(
+        state_code_num_of_records = census_analyser.load_india_census_data(
                         TestCensusAnalyser.STATE_CODE_CSV_FILE_PATH, CSVStates)
-        assert num_of_records == 37
+        assert census_num_of_records == 29
+        assert state_code_num_of_records == 37
 
-    def test_given_state_code_file_with_wrong_path_should_throw_exception(self):
+    def test_given_file_with_wrong_path_should_throw_exception(self):
         try:
             census_analyser = CensusAnalyser()
-            num_of_records = census_analyser.load_india_census_data(
+            census_num_of_records  = census_analyser.load_india_census_data(
+                            TestCensusAnalyser.CENSUS_WRONG_CSV_FILE_PATH, CSVStateCensus)
+            state_code_num_of_records = census_analyser.load_india_census_data(
                             TestCensusAnalyser.STATE_CODE_WRONG_CSV_FILE_PATH, CSVStates)
         except CensusAnalyserError as exception:
             assert exception.exception_type == CensusAnalyserError.ExceptionType.FILE_NOT_FOUND
 
-    def test_given_state_code_file_with_wrong_delimiter_should_throw_exception(self):
+    def test_given_file_with_wrong_delimiter_should_throw_exception(self):
         try:
             census_analyser = CensusAnalyser()
-            num_of_records = census_analyser.load_india_census_data(
+            census_num_of_records  = census_analyser.load_india_census_data(
+                            TestCensusAnalyser.CENSUS_WRONG_DELIMITER_FILE, CSVStateCensus)
+            state_code_num_of_records = census_analyser.load_india_census_data(
                             TestCensusAnalyser.STATE_CODE_WRONG_DELIMITER_FILE, CSVStates)
         except CensusAnalyserError as exception:
             assert exception.exception_type == CensusAnalyserError.ExceptionType.WRONG_DELIMITER
 
-    def test_given_state_code_file_with_wrong_extension_should_throw_exception(self):
+    def test_given_file_with_wrong_extension_should_throw_exception(self):
         try:
             census_analyser = CensusAnalyser()
-            num_of_records = census_analyser.load_india_census_data(
+            census_num_of_records  = census_analyser.load_india_census_data(
+                            TestCensusAnalyser.CENSUS_WRONG_EXTENSION_FILE, CSVStateCensus)
+            state_code_num_of_records = census_analyser.load_india_census_data(
                             TestCensusAnalyser.STATE_CODE_WRONG_EXTENSION_FILE, CSVStates)
         except CensusAnalyserError as exception:
             assert exception.exception_type == CensusAnalyserError.ExceptionType.WRONG_EXTENSION
 
-    def test_given_state_code_file_with_wrong_header_should_throw_exception(self):
+    def test_given_file_with_wrong_header_should_throw_exception(self):
         try:
             census_analyser = CensusAnalyser()
-            num_of_records = census_analyser.load_india_census_data(
+            census_num_of_records  = census_analyser.load_india_census_data(
+                            TestCensusAnalyser.CENSUS_WRONG_HEADER_FILE, CSVStateCensus)
+            state_code_num_of_records = census_analyser.load_india_census_data(
                             TestCensusAnalyser.STATE_CODE_WRONG_HEADER_FILE, CSVStates)
         except CensusAnalyserError as exception:
             assert exception.exception_type == CensusAnalyserError.ExceptionType.WRONG_HEADER
