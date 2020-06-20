@@ -1,6 +1,6 @@
 import enum
 
-class CensusAnalyserError(Exception):
+class AnalyserError(Exception):
     class ExceptionType(enum.Enum):
         FILE_NOT_FOUND = 1
         WRONG_DELIMITER = 2
