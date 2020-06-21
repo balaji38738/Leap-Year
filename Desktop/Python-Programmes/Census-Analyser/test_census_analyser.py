@@ -69,8 +69,16 @@ class TestCensusAnalyser:
     def test_given_indian_census_CSV_file_returns_statewise_sorted_data(self):
         analyser = Analyser()
         analyser.analyse_csv_data(TestCensusAnalyser.CENSUS_CSV_FILE_PATH, CSVStateCensus)
-        sorted_json_state_data = eval('analyser.get_statewise_sorted_data()')
-        statewise_sorted_data = json.loads(sorted_json_state_data)
-        assert statewise_sorted_data[0]["State"] == "Andhra Pradesh"
-        assert statewise_sorted_data[-1]["State"] == "West Bengal"
+        sorted_json_data = analyser.get_statewise_sorted_data()
+        sorted_data = json.loads(sorted_json_data)
+        assert sorted_data[0]["State"] == "Andhra Pradesh"
+        assert sorted_data[-1]["State"] == "West Bengal"
+
+    def test_given_state_code_CSV_file_returns_state_code_wise_sorted_data(self):
+        analyser = Analyser()
+        analyser.analyse_csv_data(TestCensusAnalyser.STATE_CODE_CSV_FILE_PATH, CSVStates)
+        sorted_json_state_data = analyser.get_state_code_wise_sorted_data()
+        sorted_data = json.loads(sorted_json_state_data)
+        assert sorted_data[0]["StateCode"] == "AD"
+        assert sorted_data[-1]["StateCode"] == "WB"
         
