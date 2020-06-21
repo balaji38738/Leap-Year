@@ -3,7 +3,7 @@ from census_analyser_exception import AnalyserError
 from csv_state_census import CSVStateCensus
 from csv_states import CSVStates
 import os
-from csv_data_loader import CSVDataLoader
+from csv_builder_factory import CSVBuilderFactory
 
 class Analyser:
     
@@ -20,7 +20,8 @@ class Analyser:
             if headers != class_name.get_headers():
                 raise AnalyserError(AnalyserError.ExceptionType.WRONG_HEADER,
                                         "csv file has wrong headers")
-            india_census = CSVDataLoader.load_csv_data(csv_file_path, class_name)
+            csv_builder_obj = CSVBuilderFactory.create_csv_builder()
+            india_census = csv_builder_obj.load_csv_data(csv_file_path, class_name)
             return india_census.shape[0] 
         except FileNotFoundError:
             raise AnalyserError(AnalyserError.ExceptionType.FILE_NOT_FOUND, "File not found")

@@ -1,6 +1,7 @@
 import pandas as pd
+import icsv_builder
 
-class CSVDataLoader:
+class CSVBuilder(icsv_builder.ICSVBuilder):
     @staticmethod
     def load_csv_data(csv_file_path, class_name):
         data_frame = pd.read_csv(
