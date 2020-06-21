@@ -2,6 +2,7 @@ from census_analyser import Analyser
 from census_analyser_exception import AnalyserError
 from csv_state_census import CSVStateCensus
 from csv_states import CSVStates
+import json
 
 class TestCensusAnalyser:
     CENSUS_CSV_FILE_PATH = "IndiaStateCensusData.csv"
@@ -65,3 +66,11 @@ class TestCensusAnalyser:
         except AnalyserError as exception:
             assert exception.exception_type == AnalyserError.ExceptionType.WRONG_HEADER
 
+    def test_given_indian_census_CSV_file_returns_statewise_sorted_data(self):
+        analyser = Analyser()
+        analyser.analyse_csv_data(TestCensusAnalyser.CENSUS_CSV_FILE_PATH, CSVStateCensus)
+        sorted_json_state_data = eval('analyser.get_statewise_sorted_data()')
+        statewise_sorted_data = json.loads(sorted_json_state_data)
+        assert statewise_sorted_data[0]["State"] == "Andhra Pradesh"
+        assert statewise_sorted_data[-1]["State"] == "West Bengal"
+        
