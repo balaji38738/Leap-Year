@@ -33,11 +33,13 @@ class Analyser:
     #   Returns the state data sorted in lexicographical order of state name in json format
     def get_statewise_sorted_data(self):
         sorted_data = self.state_dataframe.sort_values(by=[self.headers[0]])
-        json_data = sorted_data.to_json(orient="records")
+        sorted_data = sorted_data.set_index('State').T.to_dict('list')
+        json_data = json.dumps(sorted_data)
         return json_data
 
     #   Returns the state data sorted in lexicographical order of state code in json format
     def get_state_code_wise_sorted_data(self):
         sorted_data = self.state_dataframe.sort_values(by=[self.headers[3]])
-        json_data = sorted_data.to_json(orient="records")
+        sorted_data = sorted_data.set_index('State Name').T.to_dict('list')
+        json_data = json.dumps(sorted_data)
         return json_data
