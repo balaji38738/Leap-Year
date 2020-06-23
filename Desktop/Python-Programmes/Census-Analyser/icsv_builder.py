@@ -1,6 +1,6 @@
-from abc import abstractstaticmethod
+from abc import abstractmethod
 
 class ICSVBuilder:
-    @abstractstaticmethod
-    def load_csv_data(csv_file_path, class_name):
+    @abstractmethod
+    def load_csv_data(self, csv_file_path, class_name):
         pass

@@ -10,25 +10,10 @@ class Analyser:
     
     # Method to load India census csv data and count entries
     def analyse_csv_data(self, csv_file_path, class_name):
-        filename, extension = os.path.splitext(csv_file_path)
-        if extension != ".csv":
-            raise AnalyserError(AnalyserError.ExceptionType.WRONG_EXTENSION,
-                                    "File should be csv file")
-        try:                           
-            with open(csv_file_path) as csv_file:
-                reader = csv.reader(csv_file)
-                self.headers = next(reader)
-            if self.headers != class_name.get_headers():
-                raise AnalyserError(AnalyserError.ExceptionType.WRONG_HEADER,
-                                        "csv file has wrong headers")
-            self.csv_builder_obj = CSVBuilderFactory.create_csv_builder()
-            self.state_dataframe = self.csv_builder_obj.load_csv_data(csv_file_path, class_name)
-            return self.state_dataframe.shape[0]
-        except FileNotFoundError:
-            raise AnalyserError(AnalyserError.ExceptionType.FILE_NOT_FOUND, "File not found")
-        except ValueError:
-            raise AnalyserError(AnalyserError.ExceptionType.WRONG_DELIMITER,
-                                    "File should have comma delimiter")
+        self.csv_builder_obj = CSVBuilderFactory.create_csv_builder()
+        self.state_dataframe = self.csv_builder_obj.load_csv_data(csv_file_path, class_name)
+        self.headers = list(self.state_dataframe.columns)
+        return self.state_dataframe.shape[0]
 
     #   Returns the state data sorted in lexicographical order of state name in json format
     def get_statewise_sorted_data(self):
