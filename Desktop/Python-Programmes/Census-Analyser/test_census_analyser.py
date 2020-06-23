@@ -81,4 +81,12 @@ class TestCensusAnalyser:
         sorted_data = list(json.loads(sorted_json_state_data))
         assert sorted_data[0] == "Andhra Pradesh New"
         assert sorted_data[-1] == "West Bengal"
+
+    def test_given_indian_census_CSV_file_returns_population_densitywise_sorted_data(self):
+        analyser = Analyser()
+        analyser.analyse_csv_data(TestCensusAnalyser.CENSUS_CSV_FILE_PATH, CSVStateCensus)
+        sorted_json_data = analyser.get_population_densitywise_sorted_data()
+        sorted_data = list(json.loads(sorted_json_data))
+        assert sorted_data[0] == "Bihar"
+        assert sorted_data[-1] == "Arunachal Pradesh"
         

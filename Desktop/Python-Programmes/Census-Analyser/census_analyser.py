@@ -43,3 +43,10 @@ class Analyser:
         sorted_data = sorted_data.set_index('State Name').T.to_dict('list')
         json_data = json.dumps(sorted_data)
         return json_data
+
+    #   Returns the state data sorted in descending order of population density
+    def get_population_densitywise_sorted_data(self):
+        sorted_data = self.state_dataframe.sort_values(by=[self.headers[3]], ascending=False)
+        sorted_data = sorted_data.set_index('State').T.to_dict('list')
+        json_data = json.dumps(sorted_data)
+        return json_data
