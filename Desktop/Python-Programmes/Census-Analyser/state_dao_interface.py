@@ -1,6 +1,6 @@
-from abc import abstractmethod
+from abc import ABC, abstractmethod
 
-class StateDAOInterface:
+class StateDAOInterface(ABC):
     @abstractmethod
     def get(self, state_name):
         pass

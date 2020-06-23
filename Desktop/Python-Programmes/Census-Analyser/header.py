@@ -1,6 +1,6 @@
-from abc import abstractstaticmethod
+from abc import ABC, abstractstaticmethod
 
-class Header:
+class Header(ABC):
     @abstractstaticmethod
     def get_headers():
         pass
