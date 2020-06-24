@@ -24,28 +24,22 @@ class Analyser:
 
     #   Returns the state data sorted in descending order of population
     def get_populationwise_sorted_data(self):
-        sorted_data = self.state_dataframe.sort_values(by=[self.headers[1]], ascending=False)
-        sorted_data = sorted_data.set_index(self.headers[0]).T.to_dict('list')
-        json_data = json.dumps(sorted_data)
-        return json_data
+        return self.sort(self.headers[1], False, self.headers[0])
 
     #   Returns the state data sorted in lexicographical order of state code in json format
     def get_state_code_wise_sorted_data(self):
-        sorted_data = self.state_dataframe.sort_values(by=[self.headers[3]])
-        sorted_data = sorted_data.set_index(self.headers[1]).T.to_dict('list')
-        json_data = json.dumps(sorted_data)
-        return json_data
+        return self.sort(self.headers[3], True, self.headers[1])
 
     #   Returns the state data sorted in descending order of population density
     def get_population_densitywise_sorted_data(self):
-        sorted_data = self.state_dataframe.sort_values(by=[self.headers[3]], ascending=False)
-        sorted_data = sorted_data.set_index(self.headers[0]).T.to_dict('list')
-        json_data = json.dumps(sorted_data)
-        return json_data
+        return self.sort(self.headers[3], False, self.headers[0])
 
     #   Returns the state data sorted in descending order of state area
     def get_areawise_sorted_data(self):
-        sorted_data = self.state_dataframe.sort_values(by=[self.headers[2]], ascending=False)
-        sorted_data = sorted_data.set_index(self.headers[0]).T.to_dict('list')
+        return self.sort(self.headers[2], False, self.headers[0])
+
+    def sort(self, sort_by, ascending_, index_col):
+        sorted_data = self.state_dataframe.sort_values(by=sort_by, ascending=ascending_)
+        sorted_data = sorted_data.set_index(index_col).T.to_dict('list')
         json_data = json.dumps(sorted_data)
         return json_data
