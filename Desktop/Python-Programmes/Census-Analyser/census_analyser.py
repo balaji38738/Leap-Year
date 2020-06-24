@@ -9,7 +9,7 @@ import json
 class Analyser:
     
     # Method to load India census csv data and count entries
-    def analyse_csv_data(self, csv_file_path, class_name):
+    def load_census_data(self, csv_file_path, class_name):
         self.csv_builder_obj = CSVBuilderFactory.create_csv_builder()
         self.state_dataframe = self.csv_builder_obj.load_csv_data(csv_file_path, class_name)
         self.headers = list(self.state_dataframe.columns)

@@ -6,6 +6,8 @@ from csv_state_census import CSVStateCensus
 from csv_states import CSVStates
 import os
 from state_dao import StateDAO
+from us_census_dao import USCensusDAO
+from us_census_csv import USCensusCSV
 
 class CSVBuilder(icsv_builder.ICSVBuilder):
     def load_csv_data(self, csv_file_path, class_name):
@@ -20,8 +22,12 @@ class CSVBuilder(icsv_builder.ICSVBuilder):
             if self.headers != class_name.get_headers():
                 raise AnalyserError(AnalyserError.ExceptionType.WRONG_HEADER,
                                         "csv file has wrong headers")
-            state_DAO_obj = StateDAO(self.headers)
-            column_names = repr(state_DAO_obj).split(",")
+            DAO_obj = None
+            if class_name.__name__ == USCensusCSV.__name__:
+                DAO_obj = USCensusDAO()
+            else:
+                DAO_obj = StateDAO(self.headers)
+            column_names = repr(DAO_obj).split(",")
             data_frame = pd.read_csv(
                     csv_file_path,
                     index_col=None,
@@ -33,3 +39,7 @@ class CSVBuilder(icsv_builder.ICSVBuilder):
         except ValueError:
             raise AnalyserError(AnalyserError.ExceptionType.WRONG_DELIMITER,
                                     "File should have comma delimiter")
+
+abc = CSVBuilder()
+census_num_of_records = abc.load_csv_data("USCensusFile.csv", USCensusCSV)                      
+        
