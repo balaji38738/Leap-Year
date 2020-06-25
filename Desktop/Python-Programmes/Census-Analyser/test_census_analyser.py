@@ -130,3 +130,11 @@ class TestCensusAnalyser:
         sorted_data = list(json.loads(sorted_json_data))
         assert sorted_data[0] == "Alaska"
         assert sorted_data[-1] == "District of Columbia"
+
+    def test_given_us_census_CSV_file_returns_population_densitywise_sorted_data(self):
+        analyser = Analyser()
+        analyser.load_census_data(TestCensusAnalyser.US_CENSUS_CSV_FILE_PATH, USCensusCSV)
+        sorted_json_data = analyser.get_us_population_densitywise_sorted_data()
+        sorted_data = list(json.loads(sorted_json_data))
+        assert sorted_data[0] == "District of Columbia"
+        assert sorted_data[-1] == "Alaska"
