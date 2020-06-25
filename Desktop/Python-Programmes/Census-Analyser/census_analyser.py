@@ -35,9 +35,13 @@ class Analyser:
     def get_areawise_sorted_data(self):
         return self.sort(self.headers[2], False, self.headers[0])
 
-    #   Returns the state data sorted in descending order of population
+    #   Returns the us state data sorted in descending order of population
     def get_us_populationwise_sorted_data(self):
         return self.sort(self.headers[2], False, self.headers[1])
+
+    #   Returns the state data sorted in descending order of state area
+    def get_us_areawise_sorted_data(self):
+        return self.sort(self.headers[4], False, self.headers[1])
 
     def sort(self, sort_by, ascending_, index_col):
         sorted_data = self.state_dataframe.sort_values(by=sort_by, ascending=ascending_)
