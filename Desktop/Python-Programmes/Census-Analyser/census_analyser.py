@@ -17,10 +17,7 @@ class Analyser:
 
     # Returns the state data sorted in lexicographical order of state name in json format
     def get_statewise_sorted_data(self):
-        sorted_data = self.state_dataframe.sort_values(by=[self.headers[0]])
-        sorted_data = sorted_data.set_index(self.headers[0]).T.to_dict('list')
-        json_data = json.dumps(sorted_data)
-        return json_data
+        return self.sort(self.headers[0], True, self.headers[0])
 
     #   Returns the state data sorted in descending order of population
     def get_populationwise_sorted_data(self):
