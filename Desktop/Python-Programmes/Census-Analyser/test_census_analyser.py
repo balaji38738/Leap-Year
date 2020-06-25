@@ -115,3 +115,10 @@ class TestCensusAnalyser:
                             TestCensusAnalyser.US_CENSUS_CSV_FILE_PATH, USCensusCSV)                      
         assert census_num_of_records == 51
         
+    def test_given_us_census_CSV_file_returns_populationwise_sorted_data(self):
+        analyser = Analyser()
+        analyser.load_census_data(TestCensusAnalyser.US_CENSUS_CSV_FILE_PATH, USCensusCSV)
+        sorted_json_data = analyser.get_us_populationwise_sorted_data()
+        sorted_data = list(json.loads(sorted_json_data))
+        assert sorted_data[0] == "California"
+        assert sorted_data[-1] == "Wyoming"
