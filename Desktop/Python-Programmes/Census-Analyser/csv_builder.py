@@ -38,8 +38,5 @@ class CSVBuilder(icsv_builder.ICSVBuilder):
             raise AnalyserError(AnalyserError.ExceptionType.FILE_NOT_FOUND, "File not found")
         except ValueError:
             raise AnalyserError(AnalyserError.ExceptionType.WRONG_DELIMITER,
-                                    "File should have comma delimiter")
-
-abc = CSVBuilder()
-census_num_of_records = abc.load_csv_data("USCensusFile.csv", USCensusCSV)                      
+                                    "File should have comma delimiter")                    
         

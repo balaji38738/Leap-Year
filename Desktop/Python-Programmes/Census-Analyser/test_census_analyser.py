@@ -6,19 +6,19 @@ import json
 from us_census_csv import USCensusCSV
 
 class TestCensusAnalyser:
-    INDIA_CENSUS_CSV_FILE_PATH = "IndiaStateCensusData.csv"
-    INDIA_CENSUS_WRONG_CSV_FILE_PATH = "/home/IndiaStateCensusData.csv"
-    CENSUS_WRONG_DELIMITER_FILE = "CensusInvalidDelimiter.csv"
-    INDIA_CENSUS_WRONG_EXTENSION_FILE = "IndiaStateCensusData.txt"
-    INDIA_CENSUS_WRONG_HEADER_FILE = "CensusWrongHeader.csv"
+    INDIA_CENSUS_CSV_FILE_PATH = ".//Resources//IndiaStateCensusData.csv"
+    INDIA_CENSUS_WRONG_CSV_FILE_PATH = "//home//IndiaStateCensusData.csv"
+    CENSUS_WRONG_DELIMITER_FILE = ".//Resources//CensusInvalidDelimiter.csv"
+    INDIA_CENSUS_WRONG_EXTENSION_FILE = ".//Resources//IndiaStateCensusData.txt"
+    INDIA_CENSUS_WRONG_HEADER_FILE = ".//Resources//CensusWrongHeader.csv"
 
-    STATE_CODE_CSV_FILE_PATH = "IndiaStateCode.csv"
-    STATE_CODE_WRONG_CSV_FILE_PATH = "/home/IndiaStateCode.csv"
-    STATE_CODE_WRONG_DELIMITER_FILE = "StateCodeWrongDelimiter.csv"
-    STATE_CODE_WRONG_EXTENSION_FILE = "IndiaStateCode.txt"
-    STATE_CODE_WRONG_HEADER_FILE = "StateCodeWrongHeader.csv"
+    STATE_CODE_CSV_FILE_PATH = "./Resources//IndiaStateCode.csv"
+    STATE_CODE_WRONG_CSV_FILE_PATH = ".//home//IndiaStateCode.csv"
+    STATE_CODE_WRONG_DELIMITER_FILE = ".//Resources//StateCodeWrongDelimiter.csv"
+    STATE_CODE_WRONG_EXTENSION_FILE = ".//Resources//IndiaStateCode.txt"
+    STATE_CODE_WRONG_HEADER_FILE = ".//Resources//StateCodeWrongHeader.csv"
 
-    US_CENSUS_CSV_FILE_PATH = "USCensusFile.csv"
+    US_CENSUS_CSV_FILE_PATH = ".//Resources//USCensusFile.csv"
 
     def test_given_indian_census_CSV_file_returns_correct_records(self):
         analyser = Analyser()
