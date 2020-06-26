@@ -1,6 +1,7 @@
+# Returns probability of drawing an ace from a deck
 def find_ace_probability():
-    aces = 4
-    total_cards = 52
-    return aces / total_cards
+    ACSES = 4
+    TOTAL_CARDS = 52
+    return ACSES / TOTAL_CARDS
 
 print(f"Probability of drawing an ace = {find_ace_probability():.4f}")
