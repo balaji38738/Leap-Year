@@ -1,9 +1,15 @@
 import matplotlib.pyplot as plt
 
-plt.plot([1, 2, 3], [4, 5, 6], label='first line', color='r')
-plt.plot([7, 8, 9], [49, 64, 81], label='second line', color="b")
-plt.xlabel('x-axis')
-plt.ylabel('y-axis')
-plt.title('line graph')
-plt.legend()
-plt.show()
+class StraightLine:
+
+    # Method to draw straight line
+    def draw_line(self):
+        plt.plot([1, 2], [1, 4], label='straight line', color='b')
+        plt.xlabel('x-axis')
+        plt.ylabel('y-axis')
+        plt.title('Straight line graph')
+        plt.legend()
+        plt.show()
+
+straight_line = StraightLine()
+straight_line.draw_line()

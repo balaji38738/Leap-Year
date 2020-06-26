@@ -10,13 +10,13 @@ ax = fig.add_subplot(1, 1, 1)
 def animate(i):
     file = open('example.txt', 'r').read()
     lines = file.split('\n')
-    xs, ys = [], []
+    nums, squares = [], []
     for line in lines:
-        x, y = line.split(',')
-        xs.append(int(x))
-        ys.append(int(y))
+        num, square = line.split(',')
+        nums.append(int(num))
+        squares.append(int(square))
     ax.clear()
-    ax.plot(xs, ys)
+    ax.plot(nums, squares)
 
 
 ani = animation.FuncAnimation(fig, animate, interval=1000)
