@@ -11,7 +11,7 @@ class StraightLine:
     def label_and_show():
         plt.xlabel('x-axis')
         plt.ylabel('y-axis')
-        plt.title('Dashed & dotted line graph')
+        plt.title('Graph of y=2x & y=3x')
         plt.legend()
         plt.show()
 
