@@ -1,8 +1,8 @@
-import matplotlib.pyplot as plot
+import matplotlib.pyplot as plt
 slices = [7, 2, 2, 13]
 activities = ['sleeping', 'eating', 'working', 'playing']
 cols = ['c', 'm', 'r', 'b']
-plot.pie(slices,
+plt.pie(slices,
         labels=activities,
         colors=cols,
         startangle=90,
@@ -10,4 +10,4 @@ plot.pie(slices,
         autopct='%.2f%%',
         shadow=True,
         )
-plot.show()
+plt.show()

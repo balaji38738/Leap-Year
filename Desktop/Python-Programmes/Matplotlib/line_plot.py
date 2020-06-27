@@ -1,15 +1,15 @@
-import matplotlib.pyplot as plot
+import matplotlib.pyplot as plt
 
 class StraightLine:
 
     # Method to draw straight line
     def draw_line(self):
-        plot.plot([1, 2], [1, 4], label='straight line', color='b')
-        plot.xlabel('x-axis')
-        plot.ylabel('y-axis')
-        plot.title('Straight line graph')
-        plot.legend()
-        plot.show()
+        plt.plot([1, 2], [1, 4], label='straight line', color='b')
+        plt.xlabel('x-axis')
+        plt.ylabel('y-axis')
+        plt.title('Straight line graph')
+        plt.legend()
+        plt.show()
 
 straight_line = StraightLine()
 straight_line.draw_line()

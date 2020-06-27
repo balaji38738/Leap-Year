@@ -1,10 +1,10 @@
-import matplotlib.pyplot as plot
+import matplotlib.pyplot as plt
 from matplotlib import animation, style
 
 #use style.available to print all graph style options
 #can pass a list of styles as well
 style.use('Solarize_Light2')
-fig = plot.figure()
+fig = plt.figure()
 ax = fig.add_subplot(1, 1, 1)
 
 #Plots animated graph
@@ -21,4 +21,4 @@ def animate(i):
 
 
 ani = animation.FuncAnimation(fig, animate, interval=1000)
-plot.show()
+plt.show()

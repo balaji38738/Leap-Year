@@ -1,4 +1,4 @@
-import matplotlib.pyplot as plot
+import matplotlib.pyplot as plt
 
 class FileHandler:
     
@@ -20,12 +20,12 @@ class LinePlot:
     # Draws line plot from given lists of x & y co-ordinates
     @staticmethod 
     def draw_plot(xs, ys):
-        plot.plot(xs, ys, label='line', color='b')
-        plot.xlabel('x-axis')
-        plot.ylabel('y-axis')
-        plot.title('line graph')
-        plot.legend()
-        plot.show()
+        plt.plot(xs, ys, label='line', color='b')
+        plt.xlabel('x-axis')
+        plt.ylabel('y-axis')
+        plt.title('line graph')
+        plt.legend()
+        plt.show()
 
 xs, ys = FileHandler.get_file_data("Resources/test.txt")
 LinePlot.draw_plot(xs, ys)
