@@ -37,9 +37,7 @@ class GridGraph:
         graph.set_xticks(self.xs)
 
         # Set the xtick labels
-        graph.set_xticklabels(
-                [date.strftime("%Y-%M-%D") for (date, value) in zip(self.xs, self.ys)]
-                )
+        graph.set_xticklabels([date.strftime("%d-%m-%y") for date in self.xs])
 
         plt.xlabel('Date')
         plt.ylabel('Closing Value')
