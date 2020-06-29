@@ -4,7 +4,7 @@ class PieChart:
 
     # Draws the pie chart
     @staticmethod
-    def draw_chart(slice_names, slice_values, colors_):
+    def draw_chart(slice_names, slice_values, colors_, title_):
         plt.pie(
                 slice_values,
                 labels=slice_names,
@@ -12,6 +12,7 @@ class PieChart:
                 explode=(0, 0.1, 0, 0, 0, 0),
                 autopct='%.2f%%',
                 shadow=True)
+        plt.title(title_)
         plt.show()
 
 if __name__ == "__main__":
@@ -21,4 +22,5 @@ if __name__ == "__main__":
 
     #Plot graph
     colors = ["r", "g", "b", "y", "c", "m"]
-    PieChart.draw_chart(prog_language, popularity, colors)
+    PieChart.draw_chart(prog_language, popularity,
+                        colors, "Programming Language popularity chart")
