@@ -6,7 +6,7 @@ class BarChart:
     def plot_chart(self, xs, ys, label_):
         self.xs = xs
         self.ys = ys
-        plt.bar(xs, ys, label=label_, color=["r", "g", "b", "y", "c", "m"])        
+        plt.barh(xs, ys, label=label_, color=["r", "g", "b", "y", "c", "m"])        
 
     # Labels axes and displays chart
     def label_and_show(self, xlabel_, ylabel_, title_):
@@ -14,7 +14,10 @@ class BarChart:
         plt.ylabel(ylabel_)
         plt.title(title_)
         plt.legend()
+        for index, value in enumerate(self.ys):
+            plt.text(value, index, str(value))
         plt.show()
+
 
 if __name__ == "__main__":
     prog_language = ['Java', 'Python', 'PHP', 'JavaScript', 'C#', 'C++']
