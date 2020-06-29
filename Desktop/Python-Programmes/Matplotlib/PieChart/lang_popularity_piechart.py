@@ -12,7 +12,6 @@ class PieChart:
                 explode=(0, 0.1, 0, 0, 0, 0),
                 autopct='%.2f%%',
                 shadow=True)
-        plt.title(title_)
         plt.show()
 
 if __name__ == "__main__":
