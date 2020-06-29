@@ -15,6 +15,8 @@ class BarChart:
         plt.ylabel(ylabel_)
         plt.title(title_)
         plt.legend()
+        for index, value in enumerate(self.ys):
+            plt.text(value, index, str(value))
         plt.show()
 
 
