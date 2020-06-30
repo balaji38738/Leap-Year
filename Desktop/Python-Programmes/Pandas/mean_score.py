@@ -20,14 +20,9 @@ if __name__  == "__main__":
 
     exam_df = DictToDf.get_df(exam_data, labels)
 
-    # Appends row with label 'k'
-    exam_df.loc["k"] = ["Suresh", 15.5, 1, "yes"]
+    # Sorts dataframe first by name in descending order & 
+    # then by score in ascending order
+    exam_df.sort_values(by=["name", "score"], ascending=[False, True])
 
-    print("Dataframe after appending row\n")
-    print(exam_df)
-
-    # Drops row with label 'k'
-    exam_df = exam_df.drop('k')
-
-    print("Dataframe after dropping 'k' row\n")
+    print("Dataframe after sorting")
     print(exam_df)
