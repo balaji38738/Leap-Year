@@ -20,5 +20,5 @@ if __name__  == "__main__":
 
     exam_df = DictToDf.get_df(exam_data, labels)
 
-    # Prints rows where score is NaN
+    # Prints rows where score attempts < 2 & score > 15
     print(exam_df[(exam_df["attempts"] < 2) & (exam_df["score"] > 15)])
