@@ -20,5 +20,5 @@ if __name__  == "__main__":
 
     exam_df = DictToDf.get_df(exam_data, labels)
 
-    # Prints name & score columns of dataframe with selected rows
-    print(exam_df.iloc[[1, 3, 5, 6], [0, 1]])
+    # Prints entries of dataframe where attempts > 2
+    print(exam_df[exam_df["attempts"] > 2])
