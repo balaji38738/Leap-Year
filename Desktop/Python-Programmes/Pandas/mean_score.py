@@ -20,9 +20,5 @@ if __name__  == "__main__":
 
     exam_df = DictToDf.get_df(exam_data, labels)
 
-    # Sorts dataframe first by name in descending order & 
-    # then by score in ascending order
-    exam_df.sort_values(by=["name", "score"], ascending=[False, True])
-
-    print("Dataframe after sorting")
-    print(exam_df)
+    # Prints mean score of students
+    print("Mean score =", exam_df["score"].mean())
