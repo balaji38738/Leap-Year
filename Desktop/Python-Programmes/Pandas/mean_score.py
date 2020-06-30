@@ -20,5 +20,14 @@ if __name__  == "__main__":
 
     exam_df = DictToDf.get_df(exam_data, labels)
 
-    # Prints mean score of students
-    print("Mean score =", exam_df["score"].mean())
+    # Appends row with label 'k'
+    exam_df.loc["k"] = ["Suresh", 15.5, 1, "yes"]
+
+    print("Dataframe after appending row\n")
+    print(exam_df)
+
+    # Drops row with label 'k'
+    exam_df = exam_df.drop('k')
+
+    print("Dataframe after dropping 'k' row\n")
+    print(exam_df)
