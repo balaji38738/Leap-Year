@@ -20,5 +20,5 @@ if __name__  == "__main__":
 
     exam_df = DictToDf.get_df(exam_data, labels)
 
-    # Prints first 3 rows of dataframe with labels
-    print(exam_df.head(3))
+    # Prints name & score columns of dataframe
+    print(exam_df[["name", "score"]])
