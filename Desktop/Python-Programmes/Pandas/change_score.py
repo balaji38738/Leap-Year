@@ -20,9 +20,5 @@ if __name__  == "__main__":
 
     exam_df = DictToDf.get_df(exam_data, labels)
 
-    # Changes score in d row
-    exam_df.loc["d", "score"] = 11.5
-
-    # Prints rows where score attempts < 2 & score > 15
-    print("Exam dataframe after changing score\n")
-    print(exam_df)
+    # Printing total attempts
+    print("Total no of attempts", exam_df["attempts"].sum())
