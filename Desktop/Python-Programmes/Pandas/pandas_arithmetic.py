@@ -20,13 +20,13 @@ class PdArrayArithmetic:
 
 if __name__ == "__main__":
     # Pandas arrays
-    array1 = pd.Series([1, 2, 3, 4, 5])
-    array2 = pd.Series([2, 3, 5, 7, 9])
+    array1 = pd.Series([2, 4, 6, 8, 10])
+    array2 = pd.Series([1, 3, 5, 7, 9])
     
     pd_arithmetic = PdArrayArithmetic()
     
-    print("array1", array1)
-    print("array2", array2)
+    print("array1", array1, sep="\n")
+    print("array2", array2, sep="\n")
 
     print("array1 + array2", pd_arithmetic.add(array1, array2), sep="\n")
     print("array1 - array2", pd_arithmetic.subtract(array1, array2), sep="\n")
