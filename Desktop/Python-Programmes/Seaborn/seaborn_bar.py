@@ -16,8 +16,6 @@ class SeabornPlot:
 
 
 if __name__ == "__main__":
-    # titanic_data = pd.read_csv("https://github.com//mwaskom//seaborn-data//blob/master//titanic.csv",
-    #                             error_bad_lines=False)
     titanic_data = sns.load_dataset("titanic")
     SeabornPlot.draw_bar("sex", "survived", titanic_data,
                         "Sex against survived data of titanic", ['male', 'female'])
